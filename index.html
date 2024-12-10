@@ -11,12 +11,23 @@
         <h1>Forum with Video Store</h1>
     </header>
 
+    <nav>
+        <ul>
+            <li><a href="#forum">Forum</a></li>
+            <li><a href="#video-store">Video Store</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+
     <main>
         <!-- Forum Section -->
         <section id="forum">
             <h2>Discussion Forum</h2>
             <div id="posts">
                 <!-- Posts will appear here -->
+                <div class="post">
+                    <p><strong>John Doe:</strong> Welcome to the forum!</p>
+                </div>
             </div>
             <textarea id="post-input" placeholder="Write a post..."></textarea>
             <button onclick="addPost()">Post</button>
@@ -29,20 +40,28 @@
                 <!-- Video items -->
                 <div class="video-item">
                     <h3>Video 1: Learn JavaScript</h3>
+                    <p>Description: A beginner-friendly guide to JavaScript programming.</p>
                     <p>Price: 200 BDT</p>
-                    <button onclick="buyVideo('Learn JavaScript', 200)">Buy</button>
+                    <button onclick="buyVideo('Learn JavaScript', 200)">Buy Now</button>
                 </div>
                 <div class="video-item">
                     <h3>Video 2: Master CSS</h3>
+                    <p>Description: Advanced techniques for designing beautiful web pages.</p>
                     <p>Price: 150 BDT</p>
-                    <button onclick="buyVideo('Master CSS', 150)">Buy</button>
+                    <button onclick="buyVideo('Master CSS', 150)">Buy Now</button>
                 </div>
             </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <h2>About Us</h2>
+            <p>Welcome to our forum! Here, you can discuss various topics and purchase exclusive video tutorials. Our platform offers secure payment options and a user-friendly interface.</p>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Forum with Video Store</p>
+        <p>&copy; 2024 Forum with Video Store | All rights reserved.</p>
     </footer>
 
     <script src="scripts.js"></script>
