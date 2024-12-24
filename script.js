@@ -8,7 +8,6 @@ function calculateTotalBalance() {
     return totalContributions - totalExpenses;
 }
 
-// নতুন অবদান যোগ করার ফাংশন
 function addContribution() {
     const memberName = document.getElementById("member-name").value;
     const amount = parseFloat(document.getElementById("amount").value);
@@ -19,17 +18,11 @@ function addContribution() {
     }
 
     contributions.push({ member: memberName, amount });
-    localStorage.setItem("contributions", JSON.stringify(contributions)); // লোকাল স্টোরেজে সেভ
-
+    localStorage.setItem("contributions", JSON.stringify(contributions));
     totalBalance += amount;
-    localStorage.setItem("totalBalance", totalBalance); // আপডেটেড ব্যালেন্স সেভ
-
     updateUI();
-    document.getElementById("member-name").value = "";
-    document.getElementById("amount").value = "";
 }
 
-// নতুন খরচ যোগ করার ফাংশন
 function addExpense() {
     const expenseAmount = parseFloat(document.getElementById("expense-amount").value);
     const expenseReason = document.getElementById("expense-reason").value;
@@ -45,17 +38,11 @@ function addExpense() {
     }
 
     expenses.push({ amount: expenseAmount, reason: expenseReason });
-    localStorage.setItem("expenses", JSON.stringify(expenses)); // লোকাল স্টোরেজে সেভ
-
+    localStorage.setItem("expenses", JSON.stringify(expenses));
     totalBalance -= expenseAmount;
-    localStorage.setItem("totalBalance", totalBalance); // আপডেটেড ব্যালেন্স সেভ
-
     updateUI();
-    document.getElementById("expense-amount").value = "";
-    document.getElementById("expense-reason").value = "";
 }
 
-// UI আপডেট করার ফাংশন
 function updateUI() {
     document.getElementById("balance").innerText = totalBalance;
 
@@ -73,5 +60,20 @@ function updateUI() {
     });
 }
 
-// পেজ লোডের সময় UI আপডেট
+function downloadPDF() {
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.text("Expense Tracker Report", 10, 10);
+    let y = 20;
+
+    expenses.forEach((expense) => {
+        doc.text(`Amount: ${expense.amount}, Reason: ${expense.reason}`, 10, y);
+        y += 10;
+    });
+
+    doc.text(`Total Balance: ${totalBalance}`, 10, y + 10);
+    doc.save("Expense_Report.pdf");
+}
+
 updateUI();
