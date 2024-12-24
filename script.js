@@ -8,6 +8,7 @@ function calculateTotalBalance() {
     return totalContributions - totalExpenses;
 }
 
+// নতুন অবদান যোগ করার ফাংশন
 function addContribution() {
     const memberName = document.getElementById("member-name").value;
     const amount = parseFloat(document.getElementById("amount").value);
@@ -17,9 +18,8 @@ function addContribution() {
         return;
     }
 
-    // নতুন ডাটা অ্যাড করুন
     contributions.push({ member: memberName, amount });
-    localStorage.setItem("contributions", JSON.stringify(contributions)); // Local Storage-এ সেভ
+    localStorage.setItem("contributions", JSON.stringify(contributions)); // লোকাল স্টোরেজে সেভ
 
     totalBalance += amount;
     localStorage.setItem("totalBalance", totalBalance); // আপডেটেড ব্যালেন্স সেভ
@@ -29,6 +29,7 @@ function addContribution() {
     document.getElementById("amount").value = "";
 }
 
+// নতুন খরচ যোগ করার ফাংশন
 function addExpense() {
     const expenseAmount = parseFloat(document.getElementById("expense-amount").value);
     const expenseReason = document.getElementById("expense-reason").value;
@@ -43,9 +44,8 @@ function addExpense() {
         return;
     }
 
-    // নতুন খরচ যুক্ত করুন
     expenses.push({ amount: expenseAmount, reason: expenseReason });
-    localStorage.setItem("expenses", JSON.stringify(expenses)); // Local Storage-এ সেভ
+    localStorage.setItem("expenses", JSON.stringify(expenses)); // লোকাল স্টোরেজে সেভ
 
     totalBalance -= expenseAmount;
     localStorage.setItem("totalBalance", totalBalance); // আপডেটেড ব্যালেন্স সেভ
@@ -55,6 +55,7 @@ function addExpense() {
     document.getElementById("expense-reason").value = "";
 }
 
+// UI আপডেট করার ফাংশন
 function updateUI() {
     document.getElementById("balance").innerText = totalBalance;
 
@@ -72,5 +73,5 @@ function updateUI() {
     });
 }
 
-// পেজ লোডের সময় UI আপডেট করুন
+// পেজ লোডের সময় UI আপডেট
 updateUI();
