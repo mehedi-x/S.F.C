@@ -1,5 +1,12 @@
-let contributions = [];
-let totalBalance = 0;
+let contributions = JSON.parse(localStorage.getItem("contributions")) || [];
+let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+let totalBalance = calculateTotalBalance();
+
+function calculateTotalBalance() {
+    const totalContributions = contributions.reduce((sum, c) => sum + c.amount, 0);
+    const totalExpenses = expenses.reduce((sum, e) => sum + e.amount, 0);
+    return totalContributions - totalExpenses;
+}
 
 function addContribution() {
     const memberName = document.getElementById("member-name").value;
@@ -10,16 +17,16 @@ function addContribution() {
         return;
     }
 
+    // নতুন ডাটা অ্যাড করুন
     contributions.push({ member: memberName, amount });
-    totalBalance += amount;
+    localStorage.setItem("contributions", JSON.stringify(contributions)); // Local Storage-এ সেভ
 
-    updateBalance();
+    totalBalance += amount;
+    localStorage.setItem("totalBalance", totalBalance); // আপডেটেড ব্যালেন্স সেভ
+
+    updateUI();
     document.getElementById("member-name").value = "";
     document.getElementById("amount").value = "";
-}
-
-function updateBalance() {
-    document.getElementById("balance").innerText = totalBalance;
 }
 
 function addExpense() {
@@ -36,19 +43,34 @@ function addExpense() {
         return;
     }
 
-    const expenseTableBody = document.getElementById("expense-table-body");
-    const newRow = document.createElement("tr");
-
-    newRow.innerHTML = `
-        <td>-</td>
-        <td>${expenseAmount}</td>
-        <td>${expenseReason}</td>
-    `;
-    expenseTableBody.appendChild(newRow);
+    // নতুন খরচ যুক্ত করুন
+    expenses.push({ amount: expenseAmount, reason: expenseReason });
+    localStorage.setItem("expenses", JSON.stringify(expenses)); // Local Storage-এ সেভ
 
     totalBalance -= expenseAmount;
-    updateBalance();
+    localStorage.setItem("totalBalance", totalBalance); // আপডেটেড ব্যালেন্স সেভ
 
+    updateUI();
     document.getElementById("expense-amount").value = "";
     document.getElementById("expense-reason").value = "";
 }
+
+function updateUI() {
+    document.getElementById("balance").innerText = totalBalance;
+
+    const expenseTableBody = document.getElementById("expense-table-body");
+    expenseTableBody.innerHTML = "";
+
+    expenses.forEach((expense) => {
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+            <td>-</td>
+            <td>${expense.amount}</td>
+            <td>${expense.reason}</td>
+        `;
+        expenseTableBody.appendChild(newRow);
+    });
+}
+
+// পেজ লোডের সময় UI আপডেট করুন
+updateUI();
