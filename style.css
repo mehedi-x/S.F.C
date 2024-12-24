@@ -1,66 +1,135 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Group Expense Tracker</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <!-- Header -->
-    <header>
-        <div class="header-container">
-            <h1>Group Expense Tracker</h1>
-            <p>Manage your group expenses effortlessly!</p>
-        </div>
-    </header>
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f9;
+}
 
-    <!-- Main Content -->
-    <main class="container">
-        <section id="expense-form">
-            <h2>Add Contribution</h2>
-            <label for="member-name">Member Name:</label>
-            <input type="text" id="member-name" placeholder="Enter name" required>
-            <label for="amount">Amount Contributed:</label>
-            <input type="number" id="amount" placeholder="Enter amount" required>
-            <button onclick="addContribution()">Add Contribution</button>
-        </section>
+h1, h2, h3 {
+    margin: 0;
+    padding: 10px 0;
+    color: #333;
+}
 
-        <section id="add-expense">
-            <h2>Add Expense</h2>
-            <label for="expense-amount">Expense Amount:</label>
-            <input type="number" id="expense-amount" placeholder="Enter amount" required>
-            <label for="expense-reason">Reason:</label>
-            <input type="text" id="expense-reason" placeholder="Enter reason" required>
-            <button onclick="addExpense()">Add Expense</button>
-        </section>
+/* Header */
+header {
+    background: #007bff;
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+}
 
-        <section id="expense-list">
-            <h2>Expense List</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Member</th>
-                        <th>Amount</th>
-                        <th>Reason</th>
-                    </tr>
-                </thead>
-                <tbody id="expense-table-body"></tbody>
-            </table>
-        </section>
+header h1 {
+    font-size: 1.8rem;
+}
 
-        <section id="total-expense">
-            <h3>Total Balance: <span id="balance">0</span></h3>
-        </section>
-    </main>
+header p {
+    font-size: 1rem;
+    margin: 5px 0 0;
+}
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <p>© 2024 Group Expense Tracker. All rights reserved.</p>
-        </div>
-    </footer>
+/* Main Content */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background: #218838;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+#balance {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* Footer */
+footer {
+    background: #343a40;
+    color: #fff;
+    text-align: center;
+    padding: 15px 20px;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    table, th, td {
+        font-size: 0.8rem;
+    }
+
+    footer p {
+        font-size: 0.8rem;
+    }
+}
