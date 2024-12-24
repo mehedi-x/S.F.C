@@ -1,79 +1,87 @@
 let contributions = JSON.parse(localStorage.getItem("contributions")) || [];
 let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
-let totalBalance = calculateTotalBalance();
 
-function calculateTotalBalance() {
-    const totalContributions = contributions.reduce((sum, c) => sum + c.amount, 0);
-    const totalExpenses = expenses.reduce((sum, e) => sum + e.amount, 0);
-    return totalContributions - totalExpenses;
+function updateUI() {
+    const tableBody = document.getElementById("summary-table");
+    tableBody.innerHTML = "";
+    let totalContribution = 0;
+    let totalExpense = 0;
+
+    contributions.forEach((contribution) => {
+        totalContribution += contribution.amount;
+        const row = `<tr>
+                        <td>${contribution.name}</td>
+                        <td>${contribution.amount}</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>`;
+        tableBody.innerHTML += row;
+    });
+
+    expenses.forEach((expense) => {
+        totalExpense += expense.amount;
+        const row = `<tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>${expense.amount}</td>
+                        <td>${expense.reason}</td>
+                    </tr>`;
+        tableBody.innerHTML += row;
+    });
+
+    document.getElementById("total-balance").textContent =
+        totalContribution - totalExpense;
+
+    localStorage.setItem("contributions", JSON.stringify(contributions));
+    localStorage.setItem("expenses", JSON.stringify(expenses));
 }
 
 function addContribution() {
-    const memberName = document.getElementById("member-name").value;
-    const amount = parseFloat(document.getElementById("amount").value);
+    const name = document.getElementById("contributor-name").value;
+    const amount = parseFloat(document.getElementById("contribution-amount").value);
 
-    if (!memberName || amount <= 0) {
-        alert("Please enter valid name and amount.");
-        return;
+    if (name && amount > 0) {
+        contributions.push({ name, amount });
+        updateUI();
     }
-
-    contributions.push({ member: memberName, amount });
-    localStorage.setItem("contributions", JSON.stringify(contributions));
-    totalBalance += amount;
-    updateUI();
 }
 
 function addExpense() {
-    const expenseAmount = parseFloat(document.getElementById("expense-amount").value);
-    const expenseReason = document.getElementById("expense-reason").value;
+    const amount = parseFloat(document.getElementById("expense-amount").value);
+    const reason = document.getElementById("expense-reason").value;
 
-    if (expenseAmount <= 0 || !expenseReason) {
-        alert("Please enter valid expense amount and reason.");
-        return;
+    if (amount > 0 && reason) {
+        expenses.push({ amount, reason });
+        updateUI();
     }
-
-    if (expenseAmount > totalBalance) {
-        alert("Not enough balance!");
-        return;
-    }
-
-    expenses.push({ amount: expenseAmount, reason: expenseReason });
-    localStorage.setItem("expenses", JSON.stringify(expenses));
-    totalBalance -= expenseAmount;
-    updateUI();
 }
 
-function updateUI() {
-    document.getElementById("balance").innerText = totalBalance;
-
-    const expenseTableBody = document.getElementById("expense-table-body");
-    expenseTableBody.innerHTML = "";
-
-    expenses.forEach((expense) => {
-        const newRow = document.createElement("tr");
-        newRow.innerHTML = `
-            <td>-</td>
-            <td>${expense.amount}</td>
-            <td>${expense.reason}</td>
-        `;
-        expenseTableBody.appendChild(newRow);
-    });
+function resetData() {
+    if (confirm("Are you sure you want to reset all data?")) {
+        contributions = [];
+        expenses = [];
+        localStorage.clear();
+        updateUI();
+    }
 }
 
 function downloadPDF() {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
+    doc.text("TravelExpense Report", 10, 10);
 
-    doc.text("Expense Tracker Report", 10, 10);
     let y = 20;
-
-    expenses.forEach((expense) => {
-        doc.text(`Amount: ${expense.amount}, Reason: ${expense.reason}`, 10, y);
+    contributions.forEach((c) => {
+        doc.text(`Contributor: ${c.name}, Amount: ${c.amount}`, 10, y);
         y += 10;
     });
 
-    doc.text(`Total Balance: ${totalBalance}`, 10, y + 10);
-    doc.save("Expense_Report.pdf");
+    expenses.forEach((e) => {
+        doc.text(`Expense: ${e.amount}, Reason: ${e.reason}`, 10, y);
+        y += 10;
+    });
+
+    doc.save("TravelExpense_Report.pdf");
 }
 
 updateUI();
