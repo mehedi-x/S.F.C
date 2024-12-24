@@ -3,66 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+    <title>TravelExpense</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div class="header-container">
-            <h1>Expense Tracker</h1>
-            <p>Track and manage your expenses efficiently</p>
-        </div>
+        <h1>TravelExpense</h1>
+        <p>Track your travel expenses easily</p>
     </header>
 
     <!-- Main Content -->
-    <main class="container">
-        <!-- Contribution Section -->
-        <section id="contribution-section">
+    <main>
+        <!-- Add Contribution -->
+        <section id="contribution">
             <h2>Add Contribution</h2>
-            <label for="member-name">Member Name:</label>
-            <input type="text" id="member-name" placeholder="Enter member name" required>
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" placeholder="Enter contribution amount" required>
+            <input type="text" id="contributor-name" placeholder="Contributor Name">
+            <input type="number" id="contribution-amount" placeholder="Contribution Amount">
             <button onclick="addContribution()">Add Contribution</button>
         </section>
 
-        <!-- Expense Section -->
-        <section id="expense-section">
+        <!-- Add Expense -->
+        <section id="expense">
             <h2>Add Expense</h2>
-            <label for="expense-amount">Expense Amount:</label>
-            <input type="number" id="expense-amount" placeholder="Enter expense amount" required>
-            <label for="expense-reason">Reason:</label>
-            <input type="text" id="expense-reason" placeholder="Enter reason for expense" required>
+            <input type="number" id="expense-amount" placeholder="Expense Amount">
+            <input type="text" id="expense-reason" placeholder="Expense Reason">
             <button onclick="addExpense()">Add Expense</button>
         </section>
 
-        <!-- Expense List -->
-        <section id="expense-list">
-            <h2>Expense Summary</h2>
+        <!-- Summary -->
+        <section id="summary">
+            <h2>Summary</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Member</th>
-                        <th>Amount</th>
+                        <th>Name</th>
+                        <th>Contribution</th>
+                        <th>Expense</th>
                         <th>Reason</th>
                     </tr>
                 </thead>
-                <tbody id="expense-table-body"></tbody>
+                <tbody id="summary-table"></tbody>
             </table>
-            <h3>Total Balance: <span id="balance">0</span></h3>
+            <p>Total Balance: <span id="total-balance">0</span></p>
             <button onclick="downloadPDF()">Download PDF</button>
+        </section>
+
+        <!-- Reset -->
+        <section id="reset">
+            <button onclick="resetData()">Reset All Data</button>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <p>© 2024 Expense Tracker. All rights reserved.</p>
-        </div>
+        <p>© 2024 TravelExpense. All rights reserved.</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
