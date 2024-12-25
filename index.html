@@ -3,58 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Tutorial Website</title>
+    <title>Tutorial Portal</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header class="header">
         <div class="container">
             <h1 class="logo">My Tutorials</h1>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
     <main class="main">
         <div class="container">
-            <h2 class="main-title">Explore Our Tutorials</h2>
+            <h2>Choose a Tutorial</h2>
             <div class="tutorial-grid">
-                <div class="tutorial-card">
-                    <h3>Tutorial 1</h3>
-                    <p>Learn the basics of HTML.</p>
-                    <a href="tutorials/tutorial1.html" class="btn">View Tutorial</a>
-                </div>
-                <div class="tutorial-card">
-                    <h3>Tutorial 2</h3>
-                    <p>Introduction to CSS for styling.</p>
-                    <a href="tutorials/tutorial2.html" class="btn">View Tutorial</a>
-                </div>
-                <div class="tutorial-card">
-                    <h3>Tutorial 3</h3>
-                    <p>Understanding JavaScript fundamentals.</p>
-                    <a href="tutorials/tutorial3.html" class="btn">View Tutorial</a>
-                </div>
-                <div class="tutorial-card">
-                    <h3>Tutorial 4</h3>
-                    <p>Building responsive layouts.</p>
-                    <a href="tutorials/tutorial4.html" class="btn">View Tutorial</a>
-                </div>
-                <div class="tutorial-card">
-                    <h3>Tutorial 5</h3>
-                    <p>Advanced JavaScript concepts.</p>
-                    <a href="tutorials/tutorial5.html" class="btn">View Tutorial</a>
-                </div>
+                <button class="btn" onclick="showPopup('Tutorial 1', '12345')">Tutorial 1</button>
+                <button class="btn" onclick="showPopup('Tutorial 2', '23456')">Tutorial 2</button>
+                <button class="btn" onclick="showPopup('Tutorial 3', '34567')">Tutorial 3</button>
+                <button class="btn" onclick="showPopup('Tutorial 4', '45678')">Tutorial 4</button>
+                <button class="btn" onclick="showPopup('Tutorial 5', '56789')">Tutorial 5</button>
             </div>
         </div>
     </main>
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 My Tutorial Website | All Rights Reserved.</p>
+
+    <!-- Popup -->
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup()">&times;</span>
+            <h2 id="popup-title">Tutorial Details</h2>
+            <p id="popup-description">Enter the password to access this tutorial.</p>
+            <input type="password" id="password-input" placeholder="Enter Password">
+            <button class="btn" onclick="verifyPassword()">Submit</button>
         </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2024 My Tutorials</p>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
