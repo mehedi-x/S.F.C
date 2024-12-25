@@ -7,20 +7,54 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to My Tutorial Website</h1>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">My Tutorials</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
-    <main>
-        <ul class="tutorial-list">
-            <li><a href="tutorials/tutorial1.html">Tutorial 1</a></li>
-            <li><a href="tutorials/tutorial2.html">Tutorial 2</a></li>
-            <li><a href="tutorials/tutorial3.html">Tutorial 3</a></li>
-            <li><a href="tutorials/tutorial4.html">Tutorial 4</a></li>
-            <li><a href="tutorials/tutorial5.html">Tutorial 5</a></li>
-        </ul>
+    <main class="main">
+        <div class="container">
+            <h2 class="main-title">Explore Our Tutorials</h2>
+            <div class="tutorial-grid">
+                <div class="tutorial-card">
+                    <h3>Tutorial 1</h3>
+                    <p>Learn the basics of HTML.</p>
+                    <a href="tutorials/tutorial1.html" class="btn">View Tutorial</a>
+                </div>
+                <div class="tutorial-card">
+                    <h3>Tutorial 2</h3>
+                    <p>Introduction to CSS for styling.</p>
+                    <a href="tutorials/tutorial2.html" class="btn">View Tutorial</a>
+                </div>
+                <div class="tutorial-card">
+                    <h3>Tutorial 3</h3>
+                    <p>Understanding JavaScript fundamentals.</p>
+                    <a href="tutorials/tutorial3.html" class="btn">View Tutorial</a>
+                </div>
+                <div class="tutorial-card">
+                    <h3>Tutorial 4</h3>
+                    <p>Building responsive layouts.</p>
+                    <a href="tutorials/tutorial4.html" class="btn">View Tutorial</a>
+                </div>
+                <div class="tutorial-card">
+                    <h3>Tutorial 5</h3>
+                    <p>Advanced JavaScript concepts.</p>
+                    <a href="tutorials/tutorial5.html" class="btn">View Tutorial</a>
+                </div>
+            </div>
+        </div>
     </main>
-    <footer>
-        <p>© 2024 My Tutorial Website</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 My Tutorial Website | All Rights Reserved.</p>
+        </div>
     </footer>
 </body>
 </html>
