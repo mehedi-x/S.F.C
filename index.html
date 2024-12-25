@@ -3,62 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TravelExpense</title>
-    <link rel="stylesheet" href="style.css">
+    <title>My Tutorial Website</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
     <header>
-        <h1>TravelExpense</h1>
-        <p>Track your travel expenses easily</p>
+        <h1>Welcome to My Tutorial Website</h1>
     </header>
-
-    <!-- Main Content -->
     <main>
-        <!-- Add Contribution -->
-        <section id="contribution">
-            <h2>Add Contribution</h2>
-            <input type="text" id="contributor-name" placeholder="Contributor Name">
-            <input type="number" id="contribution-amount" placeholder="Contribution Amount">
-            <button onclick="addContribution()">Add Contribution</button>
-        </section>
-
-        <!-- Add Expense -->
-        <section id="expense">
-            <h2>Add Expense</h2>
-            <input type="number" id="expense-amount" placeholder="Expense Amount">
-            <input type="text" id="expense-reason" placeholder="Expense Reason">
-            <button onclick="addExpense()">Add Expense</button>
-        </section>
-
-        <!-- Summary -->
-        <section id="summary">
-            <h2>Summary</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Contribution</th>
-                        <th>Expense</th>
-                        <th>Reason</th>
-                    </tr>
-                </thead>
-                <tbody id="summary-table"></tbody>
-            </table>
-            <p>Total Balance: <span id="total-balance">0</span></p>
-            <button onclick="downloadPDF()">Download PDF</button>
-        </section>
-
-        <!-- Reset -->
-        <section id="reset">
-            <button onclick="resetData()">Reset All Data</button>
-        </section>
+        <ul class="tutorial-list">
+            <li><a href="tutorials/tutorial1.html">Tutorial 1</a></li>
+            <li><a href="tutorials/tutorial2.html">Tutorial 2</a></li>
+            <li><a href="tutorials/tutorial3.html">Tutorial 3</a></li>
+            <li><a href="tutorials/tutorial4.html">Tutorial 4</a></li>
+            <li><a href="tutorials/tutorial5.html">Tutorial 5</a></li>
+        </ul>
     </main>
-
     <footer>
-        <p>© 2024 TravelExpense. All rights reserved.</p>
+        <p>© 2024 My Tutorial Website</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
