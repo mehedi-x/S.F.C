@@ -3,73 +3,46 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f9;
+    color: #333;
 }
 
 header {
-    background-color: #007bff;
+    background-color: #4CAF50;
     color: white;
-    padding: 10px 20px;
+    padding: 1rem 0;
     text-align: center;
 }
 
 main {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
+    padding: 2rem;
+    text-align: center;
 }
 
-section {
-    margin-bottom: 20px;
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+ul.tutorial-list {
+    list-style-type: none;
+    padding: 0;
 }
 
-input {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+ul.tutorial-list li {
+    margin: 1rem 0;
 }
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+ul.tutorial-list a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
 }
 
-button:hover {
-    background: #0056b3;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-}
-
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #007bff;
-    color: white;
+ul.tutorial-list a:hover {
+    color: #007BFF;
 }
 
 footer {
-    text-align: center;
-    padding: 10px 0;
     background-color: #333;
     color: white;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
