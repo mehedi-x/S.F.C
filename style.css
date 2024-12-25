@@ -114,3 +114,28 @@ body {
     padding: 1rem 0;
     margin-top: 2rem;
 }
+let currentTutorialPassword = ""; // Stores the correct password for the current tutorial
+
+// Show Popup
+function showPopup(title, password) {
+    document.getElementById("popup").style.display = "flex";
+    document.getElementById("popup-title").innerText = title;
+    currentTutorialPassword = password;
+}
+
+// Close Popup
+function closePopup() {
+    document.getElementById("popup").style.display = "none";
+    document.getElementById("password-input").value = "";
+}
+
+// Verify Password
+function verifyPassword() {
+    const inputPassword = document.getElementById("password-input").value;
+    if (inputPassword === currentTutorialPassword) {
+        alert("Access Granted!");
+        // Redirect or Load Content for this Tutorial
+    } else {
+        alert("Incorrect Password. Try Again.");
+    }
+}
