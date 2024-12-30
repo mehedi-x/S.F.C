@@ -7,7 +7,10 @@ document.getElementById("findLocation").addEventListener("click", () => {
     return;
   }
 
-  fetch(`https://ip-api.com/json/${ip}`)
+  // API URL
+  const apiUrl = `https://ip-api.com/json/${ip}?fields=status,message,continent,country,regionName,city,zip,lat,lon,isp,query`;
+
+  fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
@@ -16,10 +19,14 @@ document.getElementById("findLocation").addEventListener("click", () => {
           <p><strong>City:</strong> ${data.city}</p>
           <p><strong>Region:</strong> ${data.regionName}</p>
           <p><strong>Country:</strong> ${data.country}</p>
+          <p><strong>Continent:</strong> ${data.continent}</p>
+          <p><strong>Latitude:</strong> ${data.lat}</p>
+          <p><strong>Longitude:</strong> ${data.lon}</p>
+          <p><strong>ZIP Code:</strong> ${data.zip}</p>
           <p><strong>ISP:</strong> ${data.isp}</p>
         `;
       } else {
-        resultDiv.innerHTML = "Invalid IP address or data not found.";
+        resultDiv.innerHTML = `<p>Error: ${data.message}</p>`;
       }
     })
     .catch((error) => {
