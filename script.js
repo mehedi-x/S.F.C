@@ -1,36 +1,22 @@
-document.getElementById("findLocation").addEventListener("click", () => {
-  const ip = document.getElementById("ipInput").value;
-  const resultDiv = document.getElementById("result");
+document.getElementById("sendBtn").addEventListener("click", function () {
+  const numbers = document.getElementById("numbers").value.split(",");
+  const message = document.getElementById("message").value;
+  const statusDiv = document.getElementById("status");
 
-  if (!ip) {
-    resultDiv.innerHTML = "Please enter a valid IP address.";
+  if (!numbers || !message) {
+    statusDiv.textContent = "Please fill in both fields.";
+    statusDiv.style.color = "red";
     return;
   }
 
-  // API URL
-  const apiUrl = `https://ip-api.com/json/${ip}?fields=status,message,continent,country,regionName,city,zip,lat,lon,isp,query`;
+  numbers.forEach((number) => {
+    const formattedNumber = number.trim();
+    const whatsappUrl = `https://wa.me/${formattedNumber}?text=${encodeURIComponent(
+      message
+    )}`;
+    window.open(whatsappUrl, "_blank");
+  });
 
-  fetch(apiUrl)
-    .then((response) => response.json())
-    .then((data) => {
-      if (data.status === "success") {
-        resultDiv.innerHTML = `
-          <p><strong>IP Address:</strong> ${data.query}</p>
-          <p><strong>City:</strong> ${data.city}</p>
-          <p><strong>Region:</strong> ${data.regionName}</p>
-          <p><strong>Country:</strong> ${data.country}</p>
-          <p><strong>Continent:</strong> ${data.continent}</p>
-          <p><strong>Latitude:</strong> ${data.lat}</p>
-          <p><strong>Longitude:</strong> ${data.lon}</p>
-          <p><strong>ZIP Code:</strong> ${data.zip}</p>
-          <p><strong>ISP:</strong> ${data.isp}</p>
-        `;
-      } else {
-        resultDiv.innerHTML = `<p>Error: ${data.message}</p>`;
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      resultDiv.innerHTML = "Error retrieving data. Please try again later.";
-    });
+  statusDiv.textContent = "Messages sent! Please check your WhatsApp.";
+  statusDiv.style.color = "green";
 });
