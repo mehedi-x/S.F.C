@@ -3,17 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>IP Location Finder</title>
+  <title>WhatsApp Bulk SMS Sender</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h1>IP Address Location Finder</h1>
-    <div class="input-section">
-      <input type="text" id="ipInput" placeholder="Enter IP Address">
-      <button id="findLocation">Find Location</button>
-    </div>
-    <div id="result"></div>
+    <h1>WhatsApp Bulk SMS Sender</h1>
+    <form id="smsForm">
+      <label for="numbers">Phone Numbers (comma-separated):</label>
+      <textarea id="numbers" placeholder="e.g., +8801234567890, +8809876543210"></textarea>
+
+      <label for="message">Message:</label>
+      <textarea id="message" placeholder="Type your message here..."></textarea>
+
+      <button type="button" id="sendBtn">Send Messages</button>
+    </form>
+    <div id="status"></div>
   </div>
   <script src="script.js"></script>
 </body>
