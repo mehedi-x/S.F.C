@@ -1,62 +1,35 @@
+/* styles.css */
 body {
   font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #ffffff;
-  margin: 0;
-  padding: 0;
+  background-color: #f4f4f9;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
 .container {
-  background-color: #1e1e1e;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  width: 400px;
   text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px;
 }
 
-h1 {
-  margin-bottom: 20px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
+ul {
   text-align: left;
-  margin-bottom: 5px;
+  list-style-type: disc;
+  margin-top: 20px;
+  margin-left: 40px;
 }
 
-textarea {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  margin-bottom: 15px;
-  resize: none;
+h2 {
+  margin-top: 20px;
 }
 
-button {
-  background-color: #25d366;
-  color: #fff;
-  border: none;
-  padding: 10px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #1eb14f;
-}
-
-#status {
-  margin-top: 15px;
-  font-size: 14px;
+p {
+  font-size: 16px;
 }
